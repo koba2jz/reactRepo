@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import {Card} from './header';
+import React, { Component } from 'react';
+import Form from './components/Form';
+import {useState} from 'react';
 
-function App() {
+
+
+
+function App(){
+
+  const[isActive, setIsActive] = useState(false);
+    
+const handleClick = () => {
+    //useful toggle switch with useState 
+    setIsActive(current => !current);
+}
+    
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{backgroundColor: isActive ? 'salmon' : 'rgb(170, 252, 184)',
+    color: isActive ? 'white' : 'rgb(170, 252, 184)',}}>
+      <button className='submit-btn2' onClick={handleClick}>Change</button>
+      <div className='outer-header'>
+        <div className='header'>
+      <Card/>
+      <Form/>
+      </div>
+      </div>
     </div>
   );
-}
 
+};
 export default App;
+
+
